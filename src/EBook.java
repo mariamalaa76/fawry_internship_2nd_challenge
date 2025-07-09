@@ -1,20 +1,19 @@
 public class EBook extends BookItem {
     private String fileType;
 
-    public EBook(String bookTitle, int year, String author, String  isbn, double price) {
+    public EBook(String bookTitle, int year, String author, String  isbn, double price,String fileType) {
         super(bookTitle, year, author, isbn, price);
+        this.fileType = fileType;
     }
 
     @Override
-    public boolean isForSale() {
-        return true;
-    }
-
-    @Override
-    public void processPurchase(int quantity, String email, String address) {
-        if (quantity != 1) {
-            throw new RuntimeException("Quantum book store: Can only purchase one copy of an eBook");
+    public void buy(int quantity, String email, String address) {
+        if (quantity > 1) {
+            throw new IllegalArgumentException("Quantum book store: Only 1 copy per EBook allowed.");
         }
-        System.out.println("Quantum book store: Sending eBook '" + getBookTitle() + "' to " + email);
+        System.out.println("Quantum book store: EBook purchased. Total: " + price);
+        System.out.println("Quantum book store: Sending to MailService at " + email);
     }
+
+
 }

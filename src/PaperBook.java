@@ -1,22 +1,24 @@
 public class PaperBook extends BookItem{
     private int stock;
 
-    public PaperBook(String bookTitle, int year, String author, String isbn, double price) {
+    public PaperBook(String bookTitle, int year, String author, String isbn, double price,int stock) {
         super(bookTitle, year, author, isbn, price);
+        this.stock = stock;
     }
 
-
-    @Override
-    public boolean isForSale() {
-        return true;
+    public int getStock() {
+        return stock;
     }
 
     @Override
-    public void processPurchase(int quantity, String email, String address) {
+    public void buy(int quantity, String email, String address) {
         if (stock < quantity) {
-            throw new RuntimeException("Quantum book store: Not enough stock for ISBN: " + getIsbn());
+            throw new IllegalArgumentException("Quantum book store: Not enough stock.");
         }
         stock -= quantity;
-        System.out.println("Quantum book store: Shipping " + quantity + " copies of '" + getBookTitle() + "' to " + address);
+        double total = price * quantity;
+        System.out.println("Quantum book store: Paper book purchased. Total: " + total);
+        System.out.println("Quantum book store: Sending to ShippingService at " + address);
     }
+
 }

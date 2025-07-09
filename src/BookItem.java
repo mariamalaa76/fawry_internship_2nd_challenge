@@ -1,11 +1,11 @@
 abstract public class BookItem {
      private String bookTitle;
-     private String year;
+     private int year;
      private String author;
      private String isbn;
-     private double price;
+     protected double price;
 
-     public BookItem(String bookTitle, String year, String author,String isbn, double price){
+     public BookItem(String bookTitle, int year, String author, String isbn, double price){
          this.bookTitle = bookTitle;
          this.year = year;
          this.author = author;
@@ -18,12 +18,20 @@ abstract public class BookItem {
         return bookTitle;
     }
 
-    public String getYear() {
+    public int getYear() {
         return year;
     }
 
     public double getPrice() {
         return price;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getIsbn() {
+        return isbn;
     }
 
     //Setter
@@ -32,7 +40,7 @@ abstract public class BookItem {
         this.bookTitle = bookTitle;
     }
 
-    public void setYear(String year) {
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -40,6 +48,14 @@ abstract public class BookItem {
         this.price = price;
     }
 
-    public abstract boolean isForSale();
-    public abstract void processPurchase(int quantity, String email, String address);
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+    public abstract void buy(int quantity, String email, String address);
+    //public abstract boolean isForSale();
+    //public abstract void processPurchase(int quantity, String email, String address);
 }

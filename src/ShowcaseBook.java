@@ -5,12 +5,8 @@ public class ShowcaseBook extends BookItem {
     }
 
     @Override
-    public boolean isForSale() {
-        return false;
+    public void buy(int quantity, String email, String address) {
+        throw new UnsupportedOperationException("Quantum book store: Showcase books are not for sale.");
     }
 
-    @Override
-    public void processPurchase(int quantity, String email, String address) {
-        throw new RuntimeException("Quantum book store: Showcase books are not for sale.");
-    }
 }
