@@ -15,7 +15,7 @@ This is a Java console-based simulation of an online bookstore with three types 
 - Extensible design using OOP (easily add new book types)
 
 ---
-![Book Purchase Screenshot](scr/Screenshots/buy_book.png)
+![Book Purchase Screenshot](src/Screenshots/buy_book.png)
 
 ## 🖼️ Screenshots
 
